@@ -1,5 +1,6 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Image} from 'react-native';
+import {Image, Pressable} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '../../../theme';
@@ -25,13 +26,16 @@ const HeaderHome = () => {
 
 const HeaderCommon = () => {
   const {top} = useSafeAreaInsets();
+  const navigation = useNavigation();
   return (
     <LinearGradient
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}
       colors={theme.colors.gradient}>
       <Block paddingTop={top + 10} paddingHorizontal={12} paddingVertical={16}>
-        <Image source={icon.back} style={styles.iconback} />
+        <Pressable onPress={() => navigation.goBack()}>
+          <Image source={icon.back} style={styles.iconback} />
+        </Pressable>
       </Block>
     </LinearGradient>
   );

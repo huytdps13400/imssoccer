@@ -1,11 +1,11 @@
-import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {routes} from './routes';
-import {bottom} from '../screens/Bottom';
+import React from 'react';
+import {Image, StyleSheet} from 'react-native';
 import {theme} from '../../theme';
 import {getSize} from '../../utils/responsive';
-import {Image, StyleSheet} from 'react-native';
 import {icon} from '../assets';
+import {bottom} from '../screens/Bottom';
+import {routes} from './routes';
 
 const Tab = createBottomTabNavigator();
 

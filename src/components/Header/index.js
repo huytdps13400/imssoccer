@@ -1,9 +1,13 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {theme} from '../../../theme';
+import {icon} from '../../assets';
 import Block from '../Block';
 import Text from '../Text';
-import {theme} from '../../../theme';
+import styles from './styles';
+
 const Header = props => {
   if (props.type === 'Home') {
     return <HeaderHome {...props} />;
@@ -20,18 +24,17 @@ const HeaderHome = () => {
 };
 
 const HeaderCommon = () => {
+  const {top} = useSafeAreaInsets();
   return (
     <LinearGradient
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}
       colors={theme.colors.gradient}>
-      <Block paddingTop={10}>
-        <Text></Text>
+      <Block paddingTop={top + 10} paddingHorizontal={12} paddingVertical={16}>
+        <Image source={icon.back} style={styles.iconback} />
       </Block>
     </LinearGradient>
   );
 };
 
 export default Header;
-
-const styles = StyleSheet.create({});

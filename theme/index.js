@@ -13,7 +13,7 @@ export const theme = {
     placeholder: '#707070',
     blue: '#0d5cb6',
     red: '#E83625',
-    gradient: ['#F04831', '#E73222', '#D9100C'],
+    gradient: ['#FFCC79', '#FDCB7A', '#FD8B00'],
     green: '#088A08',
     lightGreen: '#29bb89',
     yellow: '#FFDF00',

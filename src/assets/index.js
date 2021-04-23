@@ -8,4 +8,10 @@ const icon = {
   back: require('./icons/back.png'),
   search: require('./icons/icon-search.png'),
 };
-export {icon};
+const images = {
+  bannernew: require('./images/bannernews.png'),
+  bannernewsbottomsoccer: require('./images/bannernewsbottomsoccer.png'),
+  bannernewspicter1: require('./images/bannernewspicter1.png'),
+  bannernewspicter2: require('./images/bannernewspicter2.png'),
+};
+export {icon, images};

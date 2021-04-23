@@ -1,6 +1,6 @@
 import HomeScreen from './HomeScreen';
-import NotificationScreen from './HomeScreen';
-import ProfileScreen from './HomeScreen';
+import NotificationScreen from './NotificationScreen';
+import ProfileScreen from './ProfileScreen';
 
 export const bottom = {
   HOME_SCREEN: HomeScreen,

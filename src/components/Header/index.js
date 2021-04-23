@@ -1,14 +1,15 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Image, Pressable} from 'react-native';
+import {Image, Pressable, Platform} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '../../../theme';
+import {getSize, width, height} from '../../../utils/responsive';
 import {icon} from '../../assets';
+import TopTab from '../../navigation/TopTabNavigation';
 import Block from '../Block';
 import Text from '../Text';
 import styles from './styles';
-
 const Header = props => {
   if (props.type === 'Home') {
     return <HeaderHome {...props} />;
@@ -17,10 +18,67 @@ const Header = props => {
   }
 };
 const HeaderHome = () => {
+  const {top} = useSafeAreaInsets();
+
   return (
-    <Block>
-      <Text></Text>
-    </Block>
+    <LinearGradient
+      start={{x: 0, y: 0}}
+      end={{x: 1, y: 0}}
+      colors={theme.colors.gradient}>
+      <Block
+        paddingTop={Platform.OS === 'ios' ? top + 10 : getSize.m(top - 10)}
+        paddingHorizontal={12}>
+        <Block row alignCenter space="between">
+          <Image source={icon.logoims} style={styles.logoims} />
+          <Block row alignCenter>
+            <Block
+              alignCenter
+              justifyCenter
+              width={getSize.s(35)}
+              height={getSize.s(35)}
+              radius={getSize.s(35)}
+              backgroundColor="white">
+              <Image
+                source={icon.registration}
+                style={styles.iconregistration}
+              />
+            </Block>
+            <Text marginHorizontal={getSize.m(12)} fontType="semibold">
+              Đăng Ký
+            </Text>
+            <Block
+              alignCenter
+              justifyCenter
+              width={getSize.s(35)}
+              height={getSize.s(35)}
+              radius={getSize.s(35)}
+              backgroundColor="white">
+              <Image source={icon.logout} style={styles.iconlogout} />
+            </Block>
+            <Text marginLeft={getSize.m(12)} fontType="semibold">
+              Đăng Nhập
+            </Text>
+          </Block>
+        </Block>
+        <Block alignCenter row space="between">
+          <Block
+            alignCenter
+            row
+            radius={getSize.s(25)}
+            height={getSize.s(40)}
+            width="90%"
+            backgroundColor="white">
+            <Text marginLeft={getSize.m(12)} color={theme.colors.placeholder}>
+              Tìm kiếm...
+            </Text>
+          </Block>
+          <Image source={icon.search} style={styles.iconsearch} />
+        </Block>
+      </Block>
+      <Block width={width} height={height}>
+        <TopTab />
+      </Block>
+    </LinearGradient>
   );
 };
 
@@ -32,7 +90,7 @@ const HeaderCommon = () => {
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}
       colors={theme.colors.gradient}>
-      <Block paddingTop={top + 10} paddingHorizontal={12} paddingVertical={16}>
+      <Block paddingTop={top} paddingHorizontal={12} paddingVertical={16}>
         <Pressable onPress={() => navigation.goBack()}>
           <Image source={icon.back} style={styles.iconback} />
         </Pressable>

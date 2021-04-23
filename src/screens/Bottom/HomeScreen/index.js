@@ -1,11 +1,12 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import Block from '../../../components/Block';
 import Header from '../../../components/Header';
+
 const HomeScreen = () => {
   return (
-    <View>
-      <Header />
-    </View>
+    <Block>
+      <Header type="Home" />
+    </Block>
   );
 };
 

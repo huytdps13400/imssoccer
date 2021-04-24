@@ -7,6 +7,12 @@ const icon = {
   logoims: require('./icons/logoims.png'),
   back: require('./icons/back.png'),
   search: require('./icons/icon-search.png'),
+  avatar: require('./icons/icon-avatar.png'),
+  camera: require('./icons/icon-camera.png'),
+  next: require('./icons/icon-next.png'),
+  file_profile: require('./icons/file-profile.png'),
+  notification_profile: require('./icons/notification-profile.png'),
+  rules_profile: require('./icons/rules-profile.png'),
 };
 const images = {
   bannernew: require('./images/bannernews.png'),

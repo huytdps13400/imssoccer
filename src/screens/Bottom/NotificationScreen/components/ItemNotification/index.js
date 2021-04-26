@@ -1,38 +1,43 @@
 import React, {useState} from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, Pressable} from 'react-native';
 import {width} from '../../../../../../utils/responsive';
 import Block from '../../../../../components/Block';
 // import { CheckBox } from 'react-native-elements'
+import {useNavigation} from '@react-navigation/native';
 import {icon} from '../../../../../assets';
 import styles from './styles';
 import {Image} from 'react-native';
 import Text from '../../../../../components/Text';
+import { routes } from '../../../../../navigation/routes';
 
-const ItemNotification = () => {
+const ItemNotification = ({item_id, title, date }) => {
+  const navigation = useNavigation();
   return (
-    <Block
-      backgroundColor={'white'}
-      paddingHorizontal={16}
-      paddingTop={16}
-    >
-      <Block width={width -32} space={'between'}  row backgroundColor={'white'}>
+    <Pressable onPress={() =>
+      navigation.navigate(routes.DETAILS_NOTIFICATION, {
+        item_id,
+      })
+    }>
+    <Block paddingTop={16} paddingHorizontal={16}  space={'between'} row backgroundColor={'white'}>
+      <Block row  width={'75%'}>
         <Image
-          source={icon.back}
+          source={icon.checkbox}
           resizeMode={'contain'}
           style={styles.iconback}
         />
         <Text
-          
           size={16}
-          fontType={'Semibold'}
+          fontType={'medium'}
           numberOfLines={2}
-          marginHorizontal={20}
-        >
-          Siêu thị thông báo tuyển dụng nhân viên bán hàng
+          marginHorizontal={20}>
+         {title}
         </Text>
-        <Text size={14} fontType={'bold'}>12/03/2020</Text>
       </Block>
-    </Block>
+      <Text width={'15%'} size={14} fontType={'bold'}>
+      {date}
+      </Text>
+      </Block>
+      </Pressable>
   );
 };
 

@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {getSize, height} from '../../../../../../utils/responsive';
-
+import { getSize } from '../../../../../../utils/responsive';
 export default StyleSheet.create({
     iconback: {
         width: getSize.s(20),

@@ -93,28 +93,18 @@ const HeaderCommon = ({title}) => {
       <Block
         row
         alignCenter
+        paddingTop={top}
         paddingHorizontal={12}
-        paddingTop={top + 10}
-        paddingVertical={16}>
-       
-          <Pressable>
-            <Image
-              source={icon.back}
-              resizeMode={'contain'}
-              style={styles.iconback}
-            />
-          </Pressable>
-      
-        <Block flex alignCenter paddingHorizontal={30}>
-          <Text
-            center
-            size={16}
-            fontType="semibold"
-            numberOfLines={2}
-           >
+        paddingVertical={16}
+        space="between">
+        <Pressable onPress={() => navigation.goBack()}>
+          <Image source={icon.back} style={styles.iconback} />
+        </Pressable>
+        {title && (
+          <Text size={16} flex center fontType="semibold">
             {title}
           </Text>
-        </Block>
+        )}
       </Block>
     </LinearGradient>
   );

@@ -4,6 +4,7 @@ import * as React from 'react';
 import {theme} from '../../theme';
 import {getSize} from '../../utils/responsive';
 import {top} from '../screens/Bottom/HomeScreen/components/TopNavigation';
+import {navigationRef} from './RootNavigation';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -71,7 +72,7 @@ function TabStack() {
 
 function App() {
   return (
-    <NavigationContainer independent={true}>
+    <NavigationContainer independent={true} ref={navigationRef}>
       <TabStack />
     </NavigationContainer>
   );

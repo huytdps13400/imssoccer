@@ -13,6 +13,7 @@ const icon = {
   file_profile: require('./icons/file-profile.png'),
   notification_profile: require('./icons/notification-profile.png'),
   rules_profile: require('./icons/rules-profile.png'),
+  checkbox: require('./icons/checkbox.png')
 };
 const images = {
   bannernew: require('./images/bannernews.png'),

@@ -1,19 +1,18 @@
 import React from 'react';
-import {theme} from '../../../../../../theme';
-import Block from '../../../../../components/Block';
-import Text from '../../../../../components/Text';
-import {Image} from 'react-native';
+import {width} from '../../../../../../utils/responsive';
 import {icon} from '../../../../../assets';
-import styles from './styles';
-import {getSize, width, height} from '../../../../../../utils/responsive';
-import ButtonManager from '../ButtonManager';
+import Block from '../../../../../components/Block';
 import Button from '../../../../../components/Button';
+import Text from '../../../../../components/Text';
+import ButtonManager from '../ButtonManager';
+import styles from './styles';
 const BodyProfile = () => {
   return (
     <Block
-      height={"100%"}
-     justifyCenter
-      width={width -32}
+      space={'between'}
+      height={'100%'}
+      justifyCenter
+      width={width - 32}
       marginTop={23}
       radius={13}
       paddingHorizontal={22}
@@ -38,10 +37,7 @@ const BodyProfile = () => {
           title="Điều khoản sử dụng"
         />
       </Block>
-      <Button
-      title="Về trang chủ">
-
-      </Button>
+      <Button title="Về trang chủ"></Button>
     </Block>
   );
 };

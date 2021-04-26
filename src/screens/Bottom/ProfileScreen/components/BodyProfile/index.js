@@ -1,5 +1,5 @@
 import React from 'react';
-import {width} from '../../../../../../utils/responsive';
+import {width, height} from '../../../../../../utils/responsive';
 import {icon} from '../../../../../assets';
 import Block from '../../../../../components/Block';
 import Button from '../../../../../components/Button';
@@ -9,9 +9,7 @@ import styles from './styles';
 const BodyProfile = () => {
   return (
     <Block
-      space={'between'}
-      height={'100%'}
-      justifyCenter
+      height={height}
       width={width - 32}
       marginTop={23}
       radius={13}

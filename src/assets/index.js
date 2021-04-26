@@ -13,7 +13,9 @@ const icon = {
   file_profile: require('./icons/file-profile.png'),
   notification_profile: require('./icons/notification-profile.png'),
   rules_profile: require('./icons/rules-profile.png'),
-  checkbox: require('./icons/checkbox.png')
+  checkbox: require('./icons/checkbox.png'),
+  square: require('./icons/square.png'),
+  check_blank: require('./icons/check_blank.png'),
 };
 const images = {
   bannernew: require('./images/bannernews.png'),

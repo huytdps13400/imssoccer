@@ -1,5 +1,5 @@
 import React from 'react';
-import {getSize} from '../../../../utils/responsive';
+import {getSize, height} from '../../../../utils/responsive';
 import Block from '../../../components/Block';
 import Header from '../../../components/Header';
 import BodyProfile from './components/BodyProfile';
@@ -10,9 +10,11 @@ const ProfileScreen = () => {
       <Header />
       <HeaderProfile />
       <Block
+        paddingBottom={300}
         absolute
+        marginTop={getSize.m(154)}
         marginRight={12}
-        top={getSize.m(154)}
+        z-index={1}
         paddingHorizontal={16}>
         <BodyProfile />
       </Block>

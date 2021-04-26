@@ -82,7 +82,7 @@ const HeaderHome = () => {
   );
 };
 
-const HeaderCommon = () => {
+const HeaderCommon = ({title}) => {
   const {top} = useSafeAreaInsets();
   const navigation = useNavigation();
   return (
@@ -90,10 +90,31 @@ const HeaderCommon = () => {
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}
       colors={theme.colors.gradient}>
-      <Block paddingTop={top} paddingHorizontal={12} paddingVertical={16}>
-        <Pressable onPress={() => navigation.goBack()}>
-          <Image source={icon.back} style={styles.iconback} />
-        </Pressable>
+      <Block
+        row
+        alignCenter
+        paddingHorizontal={12}
+        paddingTop={top + 10}
+        paddingVertical={16}>
+       
+          <Pressable>
+            <Image
+              source={icon.back}
+              resizeMode={'contain'}
+              style={styles.iconback}
+            />
+          </Pressable>
+      
+        <Block flex alignCenter paddingHorizontal={30}>
+          <Text
+            center
+            size={16}
+            fontType="semibold"
+            numberOfLines={2}
+           >
+            {title}
+          </Text>
+        </Block>
       </Block>
     </LinearGradient>
   );

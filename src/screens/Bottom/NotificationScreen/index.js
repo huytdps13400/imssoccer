@@ -3,7 +3,7 @@ import { ScrollView, Text } from 'react-native';
 import { width } from '../../../../utils/responsive';
 import Header from '../../../components/Header';
 import Block from '../..//../components/Block';
-// import ItemNotification from './components/ItemNotification';
+import ItemNotification from './components/ItemNotification';
 
 const NotificationScreen = () => {
   return (
@@ -13,7 +13,8 @@ const NotificationScreen = () => {
         <Text center >Anh tài kêu chưa cần làm cái này:))))</Text>
       </Block>
       <ScrollView>
-        {/* <ItemNotification></ItemNotification> */}
+        <ItemNotification />
+      
       </ScrollView>
    </Block>
   );

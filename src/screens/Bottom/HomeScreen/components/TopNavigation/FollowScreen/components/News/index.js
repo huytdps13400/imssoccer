@@ -1,10 +1,12 @@
 import React from 'react';
-import {Image} from 'react-native';
+import {Image, Pressable} from 'react-native';
 import {theme} from '../../../../../../../../../theme';
 import {getSize} from '../../../../../../../../../utils/responsive';
 import {images} from '../../../../../../../../assets';
 import Block from '../../../../../../../../components/Block';
 import Text from '../../../../../../../../components/Text';
+import {navigate} from '../../../../../../../../navigation/RootNavigation';
+import {routes} from '../../../../../../../../navigation/routes';
 import styles from './styles';
 const news = () => {
   return (
@@ -23,7 +25,9 @@ const news = () => {
             4 ngày trước
           </Text>
         </Block>
-        <Text size={12}>xem tất cả</Text>
+        <Pressable onPress={() => navigate(routes.NEWS_DETAILS)}>
+          <Text size={12}>xem tất cả</Text>
+        </Pressable>
       </Block>
     </Block>
   );

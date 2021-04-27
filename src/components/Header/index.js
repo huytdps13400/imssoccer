@@ -6,6 +6,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {theme} from '../../../theme';
 import {getSize, width, height} from '../../../utils/responsive';
 import {icon} from '../../assets';
+import {routes} from '../../navigation/routes';
 import TopTab from '../../navigation/TopTabNavigation';
 import Block from '../Block';
 import Text from '../Text';
@@ -19,6 +20,7 @@ const Header = props => {
 };
 const HeaderHome = () => {
   const {top} = useSafeAreaInsets();
+  const navigation = useNavigation();
 
   return (
     <LinearGradient
@@ -30,34 +32,44 @@ const HeaderHome = () => {
         paddingHorizontal={12}>
         <Block row alignCenter space="between">
           <Image source={icon.logoims} style={styles.logoims} />
+
           <Block row alignCenter>
-            <Block
-              alignCenter
-              justifyCenter
-              width={getSize.s(35)}
-              height={getSize.s(35)}
-              radius={getSize.s(35)}
-              backgroundColor="white">
-              <Image
-                source={icon.registration}
-                style={styles.iconregistration}
-              />
-            </Block>
-            <Text marginHorizontal={getSize.m(12)} fontType="semibold">
-              Đăng Ký
-            </Text>
-            <Block
-              alignCenter
-              justifyCenter
-              width={getSize.s(35)}
-              height={getSize.s(35)}
-              radius={getSize.s(35)}
-              backgroundColor="white">
-              <Image source={icon.logout} style={styles.iconlogout} />
-            </Block>
-            <Text marginLeft={getSize.m(12)} fontType="semibold">
-              Đăng Nhập
-            </Text>
+            <Pressable
+              onPress={() => navigation.navigate(routes.SIGNUP_SCREEN)}>
+              <Block row alignCenter>
+                <Block
+                  alignCenter
+                  justifyCenter
+                  width={getSize.s(35)}
+                  height={getSize.s(35)}
+                  radius={getSize.s(35)}
+                  backgroundColor="white">
+                  <Image
+                    source={icon.registration}
+                    style={styles.iconregistration}
+                  />
+                </Block>
+                <Text marginHorizontal={getSize.m(12)} fontType="semibold">
+                  Đăng Ký
+                </Text>
+              </Block>
+            </Pressable>
+            <Pressable onPress={() => navigation.navigate(routes.LOGIN_SCREEN)}>
+              <Block row alignCenter>
+                <Block
+                  alignCenter
+                  justifyCenter
+                  width={getSize.s(35)}
+                  height={getSize.s(35)}
+                  radius={getSize.s(35)}
+                  backgroundColor="white">
+                  <Image source={icon.logout} style={styles.iconlogout} />
+                </Block>
+                <Text marginLeft={getSize.m(12)} fontType="semibold">
+                  Đăng Nhập
+                </Text>
+              </Block>
+            </Pressable>
           </Block>
         </Block>
         <Block alignCenter row space="between">

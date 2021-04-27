@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import {StatusBar} from 'react-native';
 import {bottom} from '../screens/Bottom';
+import {auth} from '../screens/Auth';
 import BottomTab from './BottomTabNavigation';
 import {navigationRef} from './RootNavigation';
 import {routes} from './routes';
@@ -32,6 +33,14 @@ const RootStack = () => {
         <Stack.Screen
           name={routes.DETAILS_NOTIFICATION}
           component={bottom.DETAILS_NOTIFICATION}
+        />
+        <Stack.Screen
+          name={routes.LOGIN_SCREEN}
+          component={auth.LOGIN_SCREEN}
+        />
+        <Stack.Screen
+          name={routes.SIGNUP_SCREEN}
+          component={auth.SIGNUP_SCREEN}
         />
       </Stack.Navigator>
     </NavigationContainer>

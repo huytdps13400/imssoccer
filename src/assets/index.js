@@ -18,6 +18,9 @@ const icon = {
   checkbox: require('./icons/checkbox.png'),
   square: require('./icons/square.png'),
   check_blank: require('./icons/check_blank.png'),
+  close: require('./icons/close.png'),
+  country: require('./icons/country.png'),
+  selectmobile: require('./icons/selectmobile.png'),
 };
 const images = {
   bannernew: require('./images/bannernews.png'),

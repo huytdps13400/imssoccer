@@ -18,6 +18,8 @@ const icon = {
   checkbox: require('./icons/checkbox.png'),
   square: require('./icons/square.png'),
   check_blank: require('./icons/check_blank.png'),
+  user_login: require('./icons/userlogin.png'),
+  pass_login: require('./icons/passlogin.png'),
 };
 const images = {
   bannernew: require('./images/bannernews.png'),

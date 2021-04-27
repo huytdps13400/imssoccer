@@ -21,6 +21,8 @@ const icon = {
   close: require('./icons/close.png'),
   country: require('./icons/country.png'),
   selectmobile: require('./icons/selectmobile.png'),
+  user_login: require('./icons/userlogin.png'),
+  pass_login: require('./icons/passlogin.png'),
 };
 const images = {
   bannernew: require('./images/bannernews.png'),

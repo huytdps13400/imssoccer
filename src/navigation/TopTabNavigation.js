@@ -1,10 +1,8 @@
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {NavigationContainer} from '@react-navigation/native';
 import * as React from 'react';
 import {theme} from '../../theme';
 import {getSize} from '../../utils/responsive';
 import {top} from '../screens/Bottom/HomeScreen/components/TopNavigation';
-import {navigationRef} from './RootNavigation';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -71,10 +69,6 @@ function TabStack() {
 }
 
 function App() {
-  return (
-    <NavigationContainer independent={true} ref={navigationRef}>
-      <TabStack />
-    </NavigationContainer>
-  );
+  return <TabStack />;
 }
 export default App;

@@ -13,11 +13,16 @@ const icon = {
   file_profile: require('./icons/file-profile.png'),
   notification_profile: require('./icons/notification-profile.png'),
   rules_profile: require('./icons/rules-profile.png'),
+  icondetailsnews: require('./icons/icondetailsnews.png'),
+  iconpromotiondetails: require('./icons/iconpromotiondetails.png'),
 };
 const images = {
   bannernew: require('./images/bannernews.png'),
   bannernewsbottomsoccer: require('./images/bannernewsbottomsoccer.png'),
   bannernewspicter1: require('./images/bannernewspicter1.png'),
   bannernewspicter2: require('./images/bannernewspicter2.png'),
+  bannernewsdetails: require('./images/bannernewsdetails.png'),
+  bannerpromotion: require('./images/bannerpromotion.png'),
+  bannerpromotionnews: require('./images/bannerpromotionnews.png'),
 };
 export {icon, images};

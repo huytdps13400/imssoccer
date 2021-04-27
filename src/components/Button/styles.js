@@ -7,6 +7,5 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginVertical: getSize.m(20),
-    borderRadius: getSize.m(45),
   },
 });

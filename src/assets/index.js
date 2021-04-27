@@ -15,6 +15,9 @@ const icon = {
   rules_profile: require('./icons/rules-profile.png'),
   icondetailsnews: require('./icons/icondetailsnews.png'),
   iconpromotiondetails: require('./icons/iconpromotiondetails.png'),
+  checkbox: require('./icons/checkbox.png'),
+  square: require('./icons/square.png'),
+  check_blank: require('./icons/check_blank.png'),
 };
 const images = {
   bannernew: require('./images/bannernews.png'),

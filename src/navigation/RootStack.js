@@ -29,6 +29,10 @@ const RootStack = () => {
           name={routes.PROMOTION_DETAILS}
           component={bottom.PROMOTION_DETAILS}
         />
+        <Stack.Screen
+          name={routes.DETAILS_NOTIFICATION}
+          component={bottom.DETAILS_NOTIFICATION}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

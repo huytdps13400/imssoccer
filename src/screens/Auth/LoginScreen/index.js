@@ -10,7 +10,10 @@ import FormInput from './components/FormInput';
 import CheckBox from '../../../components/CheckBox';
 import styles from './styles';
 import {theme} from '../../../../theme';
+import {useNavigation} from '@react-navigation/native';
+import {routes} from '../../../navigation/routes';
 const LoginScreen = () => {
+  const navigation = useNavigation();
   const [toggle, setToggle] = useState(false);
   return (
     <Block flex backgroundColor={'white'}>
@@ -57,7 +60,7 @@ const LoginScreen = () => {
               title={'Mật khẩu'}
             />
             <CheckBox
-              textStyles={{size: 15, fontWeight: 'regular'}}
+              textStyles={{size: 15, fontWeight: '100'}}
               containerStyles={{marginTop: 18}}
               title={'Ghi nhớ đăng nhập'}
               value={toggle}
@@ -70,7 +73,8 @@ const LoginScreen = () => {
             <Text center size={getSize.s(12)} marginTop={getSize.m(24)}>
               Giúp bạn tìm được công việc nhanh, dễ dàng nhất
             </Text>
-            <Pressable>
+            <Pressable
+              onPress={() => navigation.navigate(routes.SIGNUP_SCREEN, {})}>
               <Text
                 center
                 marginTop={getSize.m(19)}

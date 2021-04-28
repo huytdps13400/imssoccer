@@ -18,11 +18,19 @@ const icon = {
   checkbox: require('./icons/checkbox.png'),
   square: require('./icons/square.png'),
   check_blank: require('./icons/check_blank.png'),
+<<<<<<< HEAD
   close: require('./icons/close.png'),
   country: require('./icons/country.png'),
   selectmobile: require('./icons/selectmobile.png'),
   user_login: require('./icons/userlogin.png'),
   pass_login: require('./icons/passlogin.png'),
+=======
+  user_login: require('./icons/userlogin.png'),
+  pass_login: require('./icons/passlogin.png'),
+  close: require('./icons/close.png'),
+  country: require('./icons/country.png'),
+  selectmobile: require('./icons/selectmobile.png'),
+>>>>>>> ngandev
 };
 const images = {
   bannernew: require('./images/bannernews.png'),

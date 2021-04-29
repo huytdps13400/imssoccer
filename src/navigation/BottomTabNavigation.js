@@ -1,6 +1,6 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
-import {Image, StyleSheet} from 'react-native';
+import {Image, StyleSheet, Platform} from 'react-native';
 import {theme} from '../../theme';
 import {getSize} from '../../utils/responsive';
 import {icon} from '../assets';
@@ -15,7 +15,8 @@ const BottomTabNavigation = () => {
       initialRouteName={routes.HOME_SCREEN}
       tabBarOptions={{
         keyboardHidesTabBar: true,
-        activeTintColor: theme.colors.orange,
+        activeTintColor:
+          Platform.OS === 'ios' ? theme.colors.purple : theme.colors.orange,
         inactiveTintColor: theme.colors.lightGray,
         labelStyle: {marginBottom: getSize.m(2)},
       }}>

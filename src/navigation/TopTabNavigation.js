@@ -1,74 +1,64 @@
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import * as React from 'react';
-import {theme} from '../../theme';
-import {getSize} from '../../utils/responsive';
-import {top} from '../screens/Bottom/HomeScreen/components/TopNavigation';
+import {View, TouchableOpacity, Text} from 'react-native';
 
-const Tab = createMaterialTopTabNavigator();
-
-function TabStack() {
+function MyTabBar({state, descriptors, navigation}) {
   return (
-    <Tab.Navigator
-      initialRouteName="FirstPage"
-      tabBarOptions={{
-        activeTintColor: '#000',
-        inactiveTintColor: '#000',
-        scrollEnabled: true,
-        tabStyle: {width: 'auto'},
-        style: {
-          backgroundColor: theme.colors.gradient,
-          height: getSize.m(50),
-        },
-
-        labelStyle: {
-          textAlign: 'center',
-          textTransform: 'none',
-        },
-        indicatorStyle: {
-          borderBottomColor: theme.colors.white,
-          borderBottomWidth: 5,
-        },
+    <View
+      style={{
+        flexDirection: 'row',
+        backgroundColor: '#F4AF5F',
+        height: 50,
+        borderRadius: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
       }}>
-      <Tab.Screen
-        name="FirstPage"
-        component={top.FLLOW_SCREEN}
-        options={{
-          tabBarLabel: 'Theo dõi',
-        }}
-      />
-      <Tab.Screen
-        name="SecondPage"
-        component={top.FLLOW_SCREEN}
-        options={{
-          tabBarLabel: 'Đề xuất',
-        }}
-      />
-      <Tab.Screen
-        name="FirstsPage"
-        component={top.FLLOW_SCREEN}
-        options={{
-          tabBarLabel: 'Xã hội',
-        }}
-      />
-      <Tab.Screen
-        name="SecondsPage"
-        component={top.FLLOW_SCREEN}
-        options={{
-          tabBarLabel: 'Thế giới',
-        }}
-      />
-      <Tab.Screen
-        name="SecondssPage"
-        component={top.FLLOW_SCREEN}
-        options={{
-          tabBarLabel: 'Bóng đá việt',
-        }}
-      />
-    </Tab.Navigator>
+      {state.routes.map((route, index) => {
+        const {options} = descriptors[route.key];
+        const label =
+          options.tabBarLabel !== undefined
+            ? options.tabBarLabel
+            : options.title !== undefined
+            ? options.title
+            : route.name;
+
+        const isFocused = state.index === index;
+
+        const onPress = () => {
+          const event = navigation.emit({
+            type: 'tabPress',
+            target: route.key,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name);
+          }
+        };
+
+        const onLongPress = () => {
+          navigation.emit({
+            type: 'tabLongPress',
+            target: route.key,
+          });
+        };
+
+        return (
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityStates={isFocused ? ['selected'] : []}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            testID={options.tabBarTestID}
+            onPress={onPress}
+            onLongPress={onLongPress}
+            style={{flex: 1, alignItems: 'center'}}>
+            <Text style={{color: isFocused ? '#673ab7' : '#222'}}>{label}</Text>
+          </TouchableOpacity>
+        );
+      })}
+    </View>
   );
 }
 
 function App() {
-  return <TabStack />;
+  return <MyTabBar />;
 }
 export default App;

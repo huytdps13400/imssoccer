@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, Pressable} from 'react-native';
+import {Image, Pressable, Platform} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {getSize, width} from '../../../../utils/responsive';
 import {icon} from '../../../assets';
@@ -15,12 +15,14 @@ import {routes} from '../../../navigation/routes';
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [toggle, setToggle] = useState(false);
+  const COLOR =
+    Platform.OS === 'ios' ? theme.colors.gradient_ios : theme.colors.gradient;
   return (
     <Block flex backgroundColor={'white'}>
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
-        colors={theme.colors.gradient}
+        colors={COLOR}
         style={{height: getSize.v(275)}}
       />
       <Block

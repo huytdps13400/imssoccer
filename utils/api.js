@@ -1,9 +1,9 @@
-import store from '@redux/store';
+import store from '../src/redux/store';
 import axios from 'axios';
 
 //ROOT DOMAIN
-axios.defaults.baseURL = 'http://imsnews.thietkewebsite.info.vn/api.php/';
-// axios.defaults.baseURL = 'http://imsnewsios.thietkewebsite.info.vn/api.php/';
+// axios.defaults.baseURL = 'http://imsnews.thietkewebsite.info.vn/api.php/';
+axios.defaults.baseURL = 'http://imsnewsios.thietkewebsite.info.vn/api.php/';
 
 const getDataBody = config => {
   let data = '';

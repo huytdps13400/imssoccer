@@ -1,16 +1,25 @@
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
-import {Image, Pressable, Platform} from 'react-native';
+import Actions from '../../redux/actions';
+import React, {useEffect} from 'react';
+import {Image, Platform, Pressable} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useDispatch, useSelector} from 'react-redux';
 import {theme} from '../../../theme';
-import {getSize, width, height} from '../../../utils/responsive';
+import {getSize, height, width} from '../../../utils/responsive';
 import {icon} from '../../assets';
 import {routes} from '../../navigation/routes';
 import TopTab from '../../navigation/TopTabNavigation';
 import Block from '../Block';
 import Text from '../Text';
 import styles from './styles';
+
+const COLOR =
+  Platform.OS === 'ios' ? theme.colors.gradient_ios : theme.colors.gradient;
+
+const Tab = createMaterialTopTabNavigator();
+
 const Header = props => {
   if (props.type === 'Home') {
     return <HeaderHome {...props} />;
@@ -18,15 +27,36 @@ const Header = props => {
     return <HeaderCommon {...props} />;
   }
 };
+
 const HeaderHome = () => {
   const {top} = useSafeAreaInsets();
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const token = useSelector(state => state.tokenApp.token);
+  const newsGroup = useSelector(state => state.newsGroup.data);
+  console.log('news', newsGroup);
+  useEffect(() => {
+    dispatch({
+      type: Actions.GET_TOKEN,
+      body: {
+        username: 'ims',
+        password: 'bxsMSKNrDIlO3KRsszQe0tRcHVyo2Ww6',
+      },
+    });
+  }, [dispatch]);
 
+  useEffect(() => {
+    if (token) {
+      dispatch({
+        type: Actions.GET_NEWS_GROUP,
+      });
+      dispatch({
+        type: Actions.GET_CONFIG_APP,
+      });
+    }
+  }, [dispatch, token]);
   return (
-    <LinearGradient
-      start={{x: 0, y: 0}}
-      end={{x: 1, y: 0}}
-      colors={theme.colors.gradient}>
+    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={COLOR}>
       <Block
         paddingTop={Platform.OS === 'ios' ? top + 10 : getSize.m(top - 10)}
         paddingHorizontal={12}>
@@ -49,7 +79,10 @@ const HeaderHome = () => {
                     style={styles.iconregistration}
                   />
                 </Block>
-                <Text marginHorizontal={getSize.m(12)} fontType="semibold">
+                <Text
+                  marginHorizontal={getSize.m(12)}
+                  fontType="semibold"
+                  color="white">
                   Đăng Ký
                 </Text>
               </Block>
@@ -65,7 +98,10 @@ const HeaderHome = () => {
                   backgroundColor="white">
                   <Image source={icon.logout} style={styles.iconlogout} />
                 </Block>
-                <Text marginLeft={getSize.m(12)} fontType="semibold">
+                <Text
+                  marginLeft={getSize.m(12)}
+                  fontType="semibold"
+                  color="white">
                   Đăng Nhập
                 </Text>
               </Block>
@@ -88,7 +124,10 @@ const HeaderHome = () => {
         </Block>
       </Block>
       <Block width={width} height={height}>
-        <TopTab />
+        {newsGroup?.length > 0 ? (
+          <Tab.Screen tabBar={props => <TopTab {...props} />}></Tab.Screen>
+        ) : null}
+        {/* <TopTab /> */}
       </Block>
     </LinearGradient>
   );
@@ -98,10 +137,7 @@ const HeaderCommon = ({title}) => {
   const {top} = useSafeAreaInsets();
   const navigation = useNavigation();
   return (
-    <LinearGradient
-      start={{x: 0, y: 0}}
-      end={{x: 1, y: 0}}
-      colors={theme.colors.gradient}>
+    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={COLOR}>
       <Block
         row
         alignCenter

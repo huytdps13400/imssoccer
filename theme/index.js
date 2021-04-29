@@ -18,6 +18,9 @@ export const theme = {
     green: '#088A08',
     lightGreen: '#29bb89',
     yellow: '#FFDF00',
+    gradient_ios: ['#eaafc8', '#654ea3'],
+    dark_purple: '#2F0B3A',
+    purple: '#654ea3',
   },
 
   fonts: {

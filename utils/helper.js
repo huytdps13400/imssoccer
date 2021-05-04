@@ -1,11 +1,11 @@
 /* eslint-disable no-lone-blocks */
 import {Dimensions, Platform} from 'react-native';
-import Toast from 'react-native-simple-toast';
+// import Toast from 'react-native-simple-toast';
 const {width} = Dimensions.get('screen');
 
-export const CustomToast = string => {
-  Toast.show(string);
-};
+// export const CustomToast = string => {
+//   Toast.show(string);
+// };
 
 export const getHtmlStyles = () => {
   let styles = '';

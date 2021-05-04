@@ -31,7 +31,11 @@ const news = React.memo(({group_id}) => {
       {newsbyGroup?.length > 0 ? (
         <>
           <Pressable
-            onPress={() => navigation.navigate(routes.PROMOTION_DETAILS)}>
+            onPress={() =>
+              navigation.navigate(routes.PROMOTION_DETAILS, {
+                item_id: newsbyGroup[0].item_id,
+              })
+            }>
             <Image
               source={{uri: newsbyGroup[0].picture}}
               style={styles.bannernews}

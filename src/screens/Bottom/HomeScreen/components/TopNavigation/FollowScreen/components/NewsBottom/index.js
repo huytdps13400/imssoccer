@@ -1,13 +1,15 @@
-import {useFocusEffect} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import React, {useCallback} from 'react';
-import {Image} from 'react-native';
+import {Image, Pressable} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {getSize} from '../../../../../../../../../utils/responsive';
 import Block from '../../../../../../../../components/Block';
+import {routes} from '../../../../../../../../navigation/routes';
 import Actions from '../../../../../../../../redux/actions';
 import styles from './styles';
 const NewsBottom = ({group_id}) => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const newsbyGroup = useSelector(state => state.newsbyGroup.data);
   useFocusEffect(
     useCallback(() => {
@@ -24,27 +26,49 @@ const NewsBottom = ({group_id}) => {
       {newsbyGroup?.length > 0 ? (
         <>
           <Block flex height={'100%'}>
-            <Image
-              source={{uri: newsbyGroup[1].picture}}
-              style={styles.imgbanner}
-              resizeMode="cover"
-            />
+            <Pressable
+              onPress={() =>
+                navigation.navigate(routes.PROMOTION_DETAILS, {
+                  item_id: newsbyGroup[1].item_id,
+                })
+              }>
+              <Image
+                source={{uri: newsbyGroup[1].picture}}
+                style={styles.imgbanner}
+                resizeMode="cover"
+              />
+            </Pressable>
           </Block>
+
           <Block width={getSize.s(2)} height={'100%'} />
           <Block column flex>
             <Block flex>
-              <Image
-                source={{uri: newsbyGroup[2].picture}}
-                style={styles.imgbannerpicter1}
-              />
+              <Pressable
+                onPress={() =>
+                  navigation.navigate(routes.PROMOTION_DETAILS, {
+                    item_id: newsbyGroup[2].item_id,
+                  })
+                }>
+                <Image
+                  source={{uri: newsbyGroup[2].picture}}
+                  style={styles.imgbannerpicter1}
+                />
+              </Pressable>
             </Block>
             <Block width={'100%'} height={getSize.s(2)} />
             {newsbyGroup.length > 3 && (
               <Block backgroundColor={'red'} flex>
-                <Image
-                  source={{uri: newsbyGroup[3].picture}}
-                  style={styles.imgbannerpicter1}
-                />
+                <Pressable
+                  onPress={() =>
+                    navigation.navigate(routes.PROMOTION_DETAILS, {
+                      item_id: newsbyGroup[3].item_id,
+                    })
+                  }>
+                  <Image
+                    source={{uri: newsbyGroup[3].picture}}
+                    style={styles.imgbannerpicter1}
+                  />
+                </Pressable>
               </Block>
             )}
           </Block>

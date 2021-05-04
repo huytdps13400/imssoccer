@@ -85,4 +85,28 @@ export const newsbyGroup = (state = initialState, action) => {
       return state;
   }
 };
-export const NewsReducer = {news, newsGroup, newsbyGroup};
+export const newsDetails = (state = initialState, action) => {
+  switch (action.type) {
+    case Actions.GET_NEWS_DETAIL: {
+      return {...state, fetching: true};
+    }
+    case getActionSuccess(Actions.GET_NEWS_DETAIL): {
+      return {
+        ...state,
+        data: action.data.data,
+        totalPage: action.data.total_page,
+        error: action.error,
+        fetching: false,
+      };
+    }
+    case getActionFail(Actions.GET_NEWS_DETAIL): {
+      return {...state, data: null, error: action.error, fetching: false};
+    }
+    case getActionUnmount(Actions.GET_NEWS_DETAIL): {
+      return {...initialState};
+    }
+    default:
+      return state;
+  }
+};
+export const NewsReducer = {news, newsGroup, newsbyGroup, newsDetails};

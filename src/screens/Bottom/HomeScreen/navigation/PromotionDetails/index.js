@@ -13,7 +13,7 @@ import styles from './styles';
 const PromotionDetails = () => {
   return (
     <Block flex backgroundColor="white">
-      <Header title={'Tin tức & khuyến mãi'} />
+      <Header title={'Chi tiết tin tức'} />
       <Block flex marginTop={getSize.m(20)} paddingBottom={getSize.m(30)}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <Block marginHorizontal={getSize.m(12)}>

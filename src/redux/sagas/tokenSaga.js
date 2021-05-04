@@ -3,7 +3,7 @@ import {put, takeLatest} from 'redux-saga/effects';
 import Actions, {getActionSuccess, getActionFail} from '../actions';
 import queryString from 'query-string';
 
-function* GetToken(actions) {
+function* getToken(actions) {
   const body = queryString.stringify(actions.body);
 
   try {
@@ -16,5 +16,5 @@ function* GetToken(actions) {
   } catch (error) {}
 }
 export function* watchTokenSagas() {
-  yield takeLatest(Actions.GET_TOKEN, GetToken);
+  yield takeLatest(Actions.GET_TOKEN, getToken);
 }

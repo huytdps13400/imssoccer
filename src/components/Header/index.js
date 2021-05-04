@@ -1,24 +1,18 @@
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {useNavigation} from '@react-navigation/native';
-import Actions from '../../redux/actions';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Image, Platform, Pressable} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {useDispatch, useSelector} from 'react-redux';
 import {theme} from '../../../theme';
-import {getSize, height, width} from '../../../utils/responsive';
+import {getSize} from '../../../utils/responsive';
 import {icon} from '../../assets';
 import {routes} from '../../navigation/routes';
-import TopTab from '../../navigation/TopTabNavigation';
 import Block from '../Block';
 import Text from '../Text';
 import styles from './styles';
 
 const COLOR =
   Platform.OS === 'ios' ? theme.colors.gradient_ios : theme.colors.gradient;
-
-const Tab = createMaterialTopTabNavigator();
 
 const Header = props => {
   if (props.type === 'Home') {
@@ -31,30 +25,7 @@ const Header = props => {
 const HeaderHome = () => {
   const {top} = useSafeAreaInsets();
   const navigation = useNavigation();
-  const dispatch = useDispatch();
-  const token = useSelector(state => state.tokenApp.token);
-  const newsGroup = useSelector(state => state.newsGroup.data);
-  console.log('news', newsGroup);
-  useEffect(() => {
-    dispatch({
-      type: Actions.GET_TOKEN,
-      body: {
-        username: 'ims',
-        password: 'bxsMSKNrDIlO3KRsszQe0tRcHVyo2Ww6',
-      },
-    });
-  }, [dispatch]);
 
-  useEffect(() => {
-    if (token) {
-      dispatch({
-        type: Actions.GET_NEWS_GROUP,
-      });
-      dispatch({
-        type: Actions.GET_CONFIG_APP,
-      });
-    }
-  }, [dispatch, token]);
   return (
     <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={COLOR}>
       <Block
@@ -122,12 +93,6 @@ const HeaderHome = () => {
           </Block>
           <Image source={icon.search} style={styles.iconsearch} />
         </Block>
-      </Block>
-      <Block width={width} height={height}>
-        {newsGroup?.length > 0 ? (
-          <Tab.Screen tabBar={props => <TopTab {...props} />}></Tab.Screen>
-        ) : null}
-        {/* <TopTab /> */}
       </Block>
     </LinearGradient>
   );
